@@ -1,20 +1,23 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
+
 
 public class Bug : MonoBehaviour
 {
-    public UnityEvent GetBug;
-    private void OnCollisionEnter(Collision collision)
+    public List<SpriteRenderer> bugList;
+    private int _currentSprite;
+    private void Awake()
     {
-        Bird bird = collision.gameObject.GetComponent<Bird>();
-        if (bird != null)
-        {
-            if (!bird.Comebacking)
-            {
-                GetBug.Invoke();
-            }
-        }
+        _currentSprite = Random.Range(0, bugList.Count);
+        bugList[_currentSprite].gameObject.SetActive(true);
+    }
+
+
+    public void ChangeColor()
+    {
+        bugList[_currentSprite].gameObject.SetActive(false);
+        _currentSprite = Random.Range(0, bugList.Count);
+        bugList[_currentSprite].gameObject.SetActive(true);
+
     }
 }

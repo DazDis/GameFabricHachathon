@@ -1,10 +1,7 @@
 using Game;
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.UIElements;
+
 
 public class Bird : MonoBehaviour
 {
@@ -12,9 +9,10 @@ public class Bird : MonoBehaviour
     public float Speed;
     public float RotationSpeed;
     public bool Comebacking = false;
-    public int HP;
+    public int Health;
     private bool _BugInZone = false;
     public UnityEvent GetBug;
+    public UnityEvent NeedBug;
 
     public float HorizontalMove;
     public float VerticalMove;
@@ -41,7 +39,13 @@ public class Bird : MonoBehaviour
     private void BindOnEnter(Collider2D arg0)
     {
         Bug bug = arg0.gameObject.GetComponent<Bug>();
-        if (bug != null)  _BugInZone = true; 
+        Nest nest = arg0.gameObject.GetComponent<Nest>();
+        if (bug != null)  _BugInZone = true;
+        if (nest != null) 
+            if (Comebacking)
+            {
+                NeedBug.Invoke();
+            }
     }
 
     private void BindOnExit(Collider2D arg0)
@@ -67,7 +71,7 @@ public class Bird : MonoBehaviour
         if (Input.GetButtonDown("e"))
         {
             if (_BugInZone) GetBug.Invoke();
-            Debug.Log("aeaweawew");
+           
         }
     }
 }
