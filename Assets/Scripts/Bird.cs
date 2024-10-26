@@ -22,6 +22,10 @@ public class Bird : MonoBehaviour
     private Quaternion Rotation;
 
     private float z = 0;
+
+    public AudioSource bug_sound;
+    public AudioSource delivery_sound;
+
     private void OnEnable()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -45,6 +49,7 @@ public class Bird : MonoBehaviour
             if (Comebacking)
             {
                 NeedBug.Invoke();
+                delivery_sound.Play();
             }
     }
 
@@ -70,7 +75,10 @@ public class Bird : MonoBehaviour
 
         if (Input.GetButtonDown("e"))
         {
-            if (_BugInZone) GetBug.Invoke();
+            if (_BugInZone) {
+                GetBug.Invoke();
+                bug_sound.Play();
+            }
            
         }
     }
