@@ -71,7 +71,7 @@ public class Bird : MonoBehaviour
                 trail_left.SetActive(true);
                 trail_right.SetActive(true);
             }
-        if (cloud != null) Speed *= 0.3f;
+        if (cloud != null) Speed *= 0.5f;
         if (teleport != null)
         {
             int a = UnityEngine.Random.Range(0, TeleportPoints.Count);
@@ -89,6 +89,7 @@ public class Bird : MonoBehaviour
         Bug bug = arg0.gameObject.GetComponent<Bug>();
         if (bug != null) _BugInZone = false;
         if (cloud != null) Speed = 1;
+
     }
 
     private void Update()

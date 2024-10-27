@@ -5,6 +5,7 @@ using UnityEngine.UI;
 public class HUD : MonoBehaviour
 {
     [SerializeField] public Slider HealthSlider;
+    [SerializeField] public DeadWindow _deadWindow;
     [SerializeField] private TMP_Text _bugCount;
     public GameObject interfacePanel;
 
@@ -29,8 +30,8 @@ public class HUD : MonoBehaviour
         {
             // Инвертируем видимость интерфейса
             interfacePanel.SetActive(!interfacePanel.activeSelf);
-            if (interfacePanel.activeSelf) Time.timeScale = 1;
-            else Time.timeScale = 0;
+            if (interfacePanel.activeSelf) Time.timeScale = 0;
+            else Time.timeScale = 1;
         }
     }
 }

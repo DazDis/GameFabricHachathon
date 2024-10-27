@@ -34,6 +34,8 @@ public class GameController : MonoBehaviour
     private void Update()
     {
         transform.position = Vector3.Lerp(transform.position, _bird.transform.position + offset, Time.deltaTime * 5f);
+        if (_hud.HealthSlider.value <= 0) { EndOfGame(); }
+
     }
 
     private void SpawnBug()
@@ -81,12 +83,13 @@ public class GameController : MonoBehaviour
     {
        
         _hud.ChangeHealth(60);
-        if (_hud.HealthSlider.value <= 0) { EndOfGame(); }
     }
 
     private void EndOfGame()
     {
-        throw new NotImplementedException();
+        Debug.Log("222");
+        _hud._deadWindow.gameObject.SetActive(true);
+        Time.timeScale = 0;
     }
 
 }
