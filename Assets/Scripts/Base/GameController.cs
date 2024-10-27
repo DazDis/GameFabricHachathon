@@ -9,6 +9,7 @@ public class GameController : MonoBehaviour
     [SerializeField] private Bird _bird;
     [SerializeField] private Nest _nest;
     [SerializeField] private Bug _bug;
+    [SerializeField] private Tip _tip;
 
     public List<BugSpawnPoint> BugSpawnPoints;
     public List<NestSpawnPoint> NestSpawnPoints;
@@ -36,6 +37,9 @@ public class GameController : MonoBehaviour
 
     private void SpawnBug()
     {
+        if (_bird.CountOfBugs == 0) _tip.CloseTips();
+        _hud.ChangeBug(++_bird.CountOfBugs);
+
         _bird.BugSprite.gameObject.SetActive(false);
         _bird.Comebacking = false;
         _bug.gameObject.SetActive(true);
@@ -45,6 +49,7 @@ public class GameController : MonoBehaviour
     }
     private void GetBug()
     {
+
         _bird.Comebacking = true;
         _bird.BugSprite.sprite = _bird.BugSprites[_bug.CurrentSprite];
         _bird.BugSprite.gameObject.SetActive(true);
@@ -54,12 +59,12 @@ public class GameController : MonoBehaviour
         _bug.ChangeColor();
 
         
-        _hud.ChangeBug(++_bird.CountOfBugs);
         SpawnNest();
     }
     private void SpawnNest()
     {
-       
+        if (_bird.CountOfBugs == 0) _tip.Maketip3();
+
         CurrentNestPosition = _nest.transform.position;
         while (CurrentNestPosition == _nest.transform.position)
             _nest.transform.position = NestSpawnPoints[UnityEngine.Random.Range(0, NestSpawnPoints.Count)].transform.position;

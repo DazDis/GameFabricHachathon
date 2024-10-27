@@ -29,7 +29,8 @@ public class Bird : MonoBehaviour
     public GameObject trail_right;
 
     public List<Sprite> BugSprites;
-    
+    public List<Transform> TeleportPoints;
+
     public UnityEvent GetBug;
     public UnityEvent NeedBug;
     private void OnEnable()
@@ -49,6 +50,8 @@ public class Bird : MonoBehaviour
     {
         Bug bug = arg0.gameObject.GetComponent<Bug>();
         Nest nest = arg0.gameObject.GetComponent<Nest>();
+        Cloud cloud = arg0.gameObject.GetComponent<Cloud>();
+        Teleport teleport = arg0.gameObject.GetComponent<Teleport>();
         if (bug != null)  _BugInZone = true;
         if (nest != null) 
             if (Comebacking)
@@ -58,6 +61,9 @@ public class Bird : MonoBehaviour
                 trail_left.SetActive(true);
                 trail_right.SetActive(true);
             }
+        if (cloud != null) Speed *= 0.3f;
+        if (teleport != null) transform.position = TeleportPoints[Random.Range(0,TeleportPoints.Count)].position;
+
     }
 
     private void BindOnExit(Collider2D arg0)
