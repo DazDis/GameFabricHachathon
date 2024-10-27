@@ -202,7 +202,7 @@ Transform:
   m_GameObject: {fileID: 208103798}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -1}
+  m_LocalPosition: {x: 0, y: 0, z: -2}
   m_LocalScale: {x: 0.05, y: 0.05, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5414,6 +5414,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b874711d6d036e04ebb1cf17f69722aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &893030930 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 144442188112355828, guid: a6f2edaec602a8241b569f1f5e87ad65, type: 3}
+  m_PrefabInstance: {fileID: 4517331793105352052}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &895040175 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4423241505525698944, guid: d0b96970e8a0f9b468cbdc7859e166e9, type: 3}
@@ -7457,6 +7462,10 @@ PrefabInstance:
       propertyPath: Priority
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6964606909799020739, guid: a6f2edaec602a8241b569f1f5e87ad65, type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 893030930}
     - target: {fileID: 6964606909799020739, guid: a6f2edaec602a8241b569f1f5e87ad65, type: 3}
       propertyPath: BugSprite
       value: 
