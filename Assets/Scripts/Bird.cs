@@ -26,6 +26,10 @@ public class Bird : MonoBehaviour
     public AudioSource bug_sound;
     public AudioSource delivery_sound;
 
+    // wind trail
+    public GameObject trail_left;
+    public GameObject trail_right;
+
     private void OnEnable()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -50,6 +54,8 @@ public class Bird : MonoBehaviour
             {
                 NeedBug.Invoke();
                 delivery_sound.Play();
+                trail_left.SetActive(true);
+                trail_right.SetActive(true);
             }
     }
 
@@ -78,6 +84,8 @@ public class Bird : MonoBehaviour
             if (_BugInZone) {
                 GetBug.Invoke();
                 bug_sound.Play();
+                trail_left.SetActive(false);
+                trail_right.SetActive(false);
             }
            
         }
