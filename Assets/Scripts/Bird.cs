@@ -62,8 +62,8 @@ public class Bird : MonoBehaviour
         Nest nest = arg0.gameObject.GetComponent<Nest>();
         Cloud cloud = arg0.gameObject.GetComponent<Cloud>();
         Teleport teleport = arg0.gameObject.GetComponent<Teleport>();
-        if (bug != null)  _BugInZone = true;
-        if (nest != null) 
+        if (bug != null) _BugInZone = true;
+        if (nest != null)
             if (Comebacking)
             {
                 NeedBug.Invoke();
@@ -71,13 +71,13 @@ public class Bird : MonoBehaviour
                 trail_left.SetActive(true);
                 trail_right.SetActive(true);
             }
-        if (cloud != null) Speed *= 0.5f;
-        if (teleport != null) 
+        if (cloud != null) Speed *= 0.3f;
+        if (teleport != null)
         {
             int a = UnityEngine.Random.Range(0, TeleportPoints.Count);
-            Vector3 vector = new Vector3(TeleportPoints[a].position.x, TeleportPoints[a].position.y, -1) ;
+            Vector3 vector = new Vector3(TeleportPoints[a].position.x, TeleportPoints[a].position.y, -1);
             transform.position = vector;
-            
+
         }
 
     }
@@ -85,11 +85,7 @@ public class Bird : MonoBehaviour
     private void BindOnExit(Collider2D arg0)
     {
         Bug bug = arg0.gameObject.GetComponent<Bug>();
-        Cloud cloud = arg0.gameObject.GetComponent<Cloud>();
-
-        if (bug != null)  _BugInZone = false;
-        if (cloud != null) Speed = 1;
-
+        if (bug != null) _BugInZone = false;
     }
 
     private void Update()
@@ -101,10 +97,10 @@ public class Bird : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.W)) OnWPressed();
         if (Input.GetKey(KeyCode.S)) OnSPressed();
-        
-      
+
+
         transform.position += transform.right * VerticalMove * Speed * Time.deltaTime;
-        
+
         HorizontalMove = Input.GetAxis("Horizontal");
         z += -HorizontalMove * (RotationSpeed - RotationSlow);
         transform.rotation = Quaternion.Euler(0, 0, z);
@@ -122,8 +118,9 @@ public class Bird : MonoBehaviour
             {
                 wind.transform.position = transform.position;
                 trail_left_tr.Clear();
-                trail_right_tr.Clear();                
+                trail_right_tr.Clear();
             }
+
         }
     }
 
@@ -131,7 +128,7 @@ public class Bird : MonoBehaviour
     {
         if (delay)
         {
-            VerticalMove += 0.2f + 0.1f*VerticalMove;
+            VerticalMove += 0.2f + 0.1f * VerticalMove;
             VerticalMove = Mathf.Clamp(VerticalMove, 0, 2 + 0.1f * CountOfBugs);
             RotationSlow = VerticalMove * 0.1f;
             RotationSlow = Mathf.Clamp(RotationSlow, 0, 0.9f * RotationSpeed);
@@ -145,12 +142,12 @@ public class Bird : MonoBehaviour
         VerticalMove = Mathf.Clamp(VerticalMove, 0, 2 + 0.1f * CountOfBugs);
         RotationSlow = VerticalMove * 0.1f;
         RotationSlow = Mathf.Clamp(RotationSlow, 0, 0.9f * RotationSpeed);
-        
+
     }
     private void Delay()
     {
         delay = false;
         delayCount = 0;
-       
+
     }
 }

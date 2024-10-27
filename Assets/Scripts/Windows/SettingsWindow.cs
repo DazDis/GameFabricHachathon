@@ -34,6 +34,7 @@ public class SettingsWindow : MonoBehaviour
     private void BindOnStartButtonClick()
     {
         SceneManager.LoadScene(0);
+        Time.timeScale = 1;
 
     }
     private void BindOnExitButtonClick()

@@ -41,7 +41,7 @@ public class GameController : MonoBehaviour
         if (_bird.CountOfBugs == 0) _tip.CloseTips();
         _hud.ChangeBug(++_bird.CountOfBugs);
 
-        if (_bird.CountOfBugs == 50)
+        if (_bird.CountOfBugs == 20)
         {
             SceneManager.LoadScene("Ending");
         }
