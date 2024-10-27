@@ -123,7 +123,7 @@ public class Bird : MonoBehaviour
             RotationSlow = VerticalMove * 0.1f;
             RotationSlow = Mathf.Clamp(RotationSlow, 0, 0.9f * RotationSpeed);
             Delay();
-            animator.SetBool("isFly", true);
+            animator.SetTrigger("isFly");
         }
     }
     private void OnSPressed()
@@ -132,7 +132,7 @@ public class Bird : MonoBehaviour
         VerticalMove = Mathf.Clamp(VerticalMove, 0, 2 + 0.1f * CountOfBugs);
         RotationSlow = VerticalMove * 0.1f;
         RotationSlow = Mathf.Clamp(RotationSlow, 0, 0.9f * RotationSpeed);
-        animator.SetBool("isFly", false);
+        
     }
     private void Delay()
     {
