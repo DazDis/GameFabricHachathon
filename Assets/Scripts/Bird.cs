@@ -84,8 +84,11 @@ public class Bird : MonoBehaviour
 
     private void BindOnExit(Collider2D arg0)
     {
+        Cloud cloud = arg0.gameObject.GetComponent<Cloud>();
+
         Bug bug = arg0.gameObject.GetComponent<Bug>();
         if (bug != null) _BugInZone = false;
+        if (cloud != null) Speed = 1;
     }
 
     private void Update()
