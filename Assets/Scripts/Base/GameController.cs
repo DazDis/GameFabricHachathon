@@ -15,8 +15,11 @@ public class GameController : MonoBehaviour
 
     public Vector3 offset = new Vector3(0, 0, -5);
     public Vector3 CurrentNestPosition;
+
+    
     private void OnEnable()
     {
+        
         _bird.NeedBug.AddListener(SpawnBug);
         _bird.GetBug.AddListener(GetBug);
     }
@@ -33,16 +36,25 @@ public class GameController : MonoBehaviour
 
     private void SpawnBug()
     {
-       _bird.Comebacking = false;
+        _bird.BugSprite.gameObject.SetActive(false);
+        _bird.Comebacking = false;
         _bug.gameObject.SetActive(true);
-        _bug.transform.position = BugSpawnPoints[UnityEngine.Random.Range(0, BugSpawnPoints.Count)].transform.position; 
+        _bug.transform.position = BugSpawnPoints[UnityEngine.Random.Range(0, BugSpawnPoints.Count)].transform.position;
+        ChangeHealth();
+
     }
     private void GetBug()
     {
-
         _bird.Comebacking = true;
+        _bird.BugSprite.sprite = _bird.BugSprites[_bug.CurrentSprite];
+        _bird.BugSprite.gameObject.SetActive(true);
+
+
         _bug.gameObject.SetActive(false);
         _bug.ChangeColor();
+
+        
+        _hud.ChangeBug(++_bird.CountOfBugs);
         SpawnNest();
     }
     private void SpawnNest()
@@ -56,8 +68,9 @@ public class GameController : MonoBehaviour
     }
     public void ChangeHealth()
     {
-        _hud.ChangeHealth(--_bird.Health);
-        if (_bird.Health <= 0) { EndOfGame(); }
+       
+        _hud.ChangeHealth(60);
+        if (_hud.HealthSlider.value <= 0) { EndOfGame(); }
     }
 
     private void EndOfGame()

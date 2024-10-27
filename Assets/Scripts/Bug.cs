@@ -5,19 +5,19 @@ using UnityEngine;
 public class Bug : MonoBehaviour
 {
     public List<SpriteRenderer> bugList;
-    private int _currentSprite;
+    public int CurrentSprite;
     private void Awake()
     {
-        _currentSprite = Random.Range(0, bugList.Count);
-        bugList[_currentSprite].gameObject.SetActive(true);
+        CurrentSprite = Random.Range(0, bugList.Count);
+        bugList[CurrentSprite].gameObject.SetActive(true);
     }
 
 
     public void ChangeColor()
     {
-        bugList[_currentSprite].gameObject.SetActive(false);
-        _currentSprite = Random.Range(0, bugList.Count);
-        bugList[_currentSprite].gameObject.SetActive(true);
+        bugList[CurrentSprite].gameObject.SetActive(false);
+        CurrentSprite = Random.Range(0, bugList.Count);
+        bugList[CurrentSprite].gameObject.SetActive(true);
 
     }
 }

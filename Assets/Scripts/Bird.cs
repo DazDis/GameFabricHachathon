@@ -1,4 +1,5 @@
 using Game;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -6,20 +7,17 @@ using UnityEngine.Events;
 public class Bird : MonoBehaviour
 {
     [SerializeField] private AZone _triggerZone;
+    [SerializeField] public SpriteRenderer BugSprite;
     public float Speed;
     public float RotationSpeed;
+    public float RotationSlow = 0;
     public bool Comebacking = false;
-    public int Health;
+    public int CountOfBugs = 0;
+
     private bool _BugInZone = false;
-    public UnityEvent GetBug;
-    public UnityEvent NeedBug;
 
     public float HorizontalMove;
     public float VerticalMove;
-
-    private Rigidbody2D rb;
-    private Vector2 MoveForvard;
-    private Quaternion Rotation;
 
     private float z = 0;
 
@@ -30,9 +28,12 @@ public class Bird : MonoBehaviour
     public GameObject trail_left;
     public GameObject trail_right;
 
+    public List<Sprite> BugSprites;
+    
+    public UnityEvent GetBug;
+    public UnityEvent NeedBug;
     private void OnEnable()
     {
-        rb = GetComponent<Rigidbody2D>();
         _triggerZone.OnEnter.AddListener(BindOnEnter);
         _triggerZone.OnExit.AddListener(BindOnExit);
     }
@@ -67,16 +68,14 @@ public class Bird : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKey(KeyCode.W)) VerticalMove += 0.05f;
-        if (Input.GetKey(KeyCode.S)) VerticalMove -= 0.05f;
+        if (Input.GetKeyDown(KeyCode.W)) OnWPressed();
+        if (Input.GetKey(KeyCode.S)) OnSPressed();
         
-
-        VerticalMove = Mathf.Clamp(VerticalMove, 0, 2);
       
         transform.position += transform.right * VerticalMove * Speed * Time.deltaTime;
         
         HorizontalMove = Input.GetAxis("Horizontal");
-        z += -HorizontalMove * RotationSpeed;
+        z += -HorizontalMove * (RotationSpeed - RotationSlow);
         transform.rotation = Quaternion.Euler(0, 0, z);
 
         if (Input.GetButtonDown("e"))
@@ -89,5 +88,20 @@ public class Bird : MonoBehaviour
             }
            
         }
+    }
+
+    private void OnWPressed()
+    {
+        VerticalMove += 0.2f;
+        VerticalMove = Mathf.Clamp(VerticalMove, 0, 2 + 0.1f * CountOfBugs);
+        RotationSlow = VerticalMove * 0.1f;
+        RotationSlow = Mathf.Clamp(RotationSlow, 0, 0.9f * RotationSpeed);
+    }
+    private void OnSPressed()
+    {
+        VerticalMove -= 0.01f;
+        VerticalMove = Mathf.Clamp(VerticalMove, 0, 2 + 0.1f * CountOfBugs);
+        RotationSlow = VerticalMove * 0.1f;
+        RotationSlow = Mathf.Clamp(RotationSlow, 0, 0.9f * RotationSpeed);
     }
 }
