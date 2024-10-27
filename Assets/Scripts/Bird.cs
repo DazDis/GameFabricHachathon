@@ -29,9 +29,12 @@ public class Bird : MonoBehaviour
     public AudioSource bug_sound;
     public AudioSource delivery_sound;
 
-    // wind trail
+    // wind
+    public GameObject wind;
     public GameObject trail_left;
     public GameObject trail_right;
+    public TrailRenderer trail_left_tr;
+    public TrailRenderer trail_right_tr;
 
     public List<Sprite> BugSprites;
     public List<Transform> TeleportPoints;
@@ -108,13 +111,19 @@ public class Bird : MonoBehaviour
 
         if (Input.GetButtonDown("e"))
         {
-            if (_BugInZone) {
+            if (_BugInZone)
+            {
                 GetBug.Invoke();
                 bug_sound.Play();
                 trail_left.SetActive(false);
                 trail_right.SetActive(false);
             }
-           
+            else
+            {
+                wind.transform.position = transform.position;
+                trail_left_tr.Clear();
+                trail_right_tr.Clear();                
+            }
         }
     }
 
