@@ -294,11 +294,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d0b96970e8a0f9b468cbdc7859e166e9, type: 3}
---- !u!1 &597586884 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8487301623497773170, guid: df2873714635244419efdbe00d902d30, type: 3}
-  m_PrefabInstance: {fileID: 5977744122942522307}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &597630985 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1900794914881972593, guid: 5b47dc736bb9e0b428b31b485d54049b, type: 3}
@@ -2064,37 +2059,19 @@ PrefabInstance:
     m_RemovedGameObjects:
     - {fileID: 837519944355583693, guid: df2873714635244419efdbe00d902d30, type: 3}
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 8487301623497773170, guid: df2873714635244419efdbe00d902d30, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 5977744122942522313}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: df2873714635244419efdbe00d902d30, type: 3}
 --- !u!114 &5977744122942522308 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7533514469549438790, guid: df2873714635244419efdbe00d902d30, type: 3}
   m_PrefabInstance: {fileID: 5977744122942522307}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 597586884}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2c2e9cea7a026cc4bb50c052e2943657, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &5977744122942522313
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 597586884}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f0013c8050542f4786fcaf0e9e4bc16, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ReturnButton: {fileID: 0}
-  StartButton: {fileID: 0}
-  ExitButton: {fileID: 0}
 --- !u!114 &6721264782489190987 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5271400748165656606, guid: 20f3f23daedf45e448072649e9a24b1d, type: 3}
