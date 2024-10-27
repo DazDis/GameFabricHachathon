@@ -29,7 +29,8 @@ public class HUD : MonoBehaviour
         {
             // Инвертируем видимость интерфейса
             interfacePanel.SetActive(!interfacePanel.activeSelf);
-            Time.timeScale = 0;
+            if (interfacePanel.activeSelf) Time.timeScale = 1;
+            else Time.timeScale = 0;
         }
     }
 }
