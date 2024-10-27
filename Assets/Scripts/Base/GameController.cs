@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 
 public class GameController : MonoBehaviour
@@ -39,6 +40,11 @@ public class GameController : MonoBehaviour
     {
         if (_bird.CountOfBugs == 0) _tip.CloseTips();
         _hud.ChangeBug(++_bird.CountOfBugs);
+
+        if (_bird.CountOfBugs == 2)
+        {
+            SceneManager.LoadScene("Ending");
+        }
 
         _bird.BugSprite.gameObject.SetActive(false);
         _bird.Comebacking = false;
