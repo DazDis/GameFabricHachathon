@@ -1,5 +1,7 @@
 using Game;
+using System;
 using System.Collections.Generic;
+
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -13,6 +15,9 @@ public class Bird : MonoBehaviour
     public float RotationSlow = 0;
     public bool Comebacking = false;
     public int CountOfBugs = 0;
+
+    private bool delay = true;
+    public float delayCount = 1;
 
     private bool _BugInZone = false;
 
@@ -64,7 +69,13 @@ public class Bird : MonoBehaviour
                 trail_right.SetActive(true);
             }
         if (cloud != null) Speed *= 0.3f;
-        if (teleport != null) transform.position = TeleportPoints[Random.Range(0,TeleportPoints.Count)].position;
+        if (teleport != null) 
+        {
+            int a = UnityEngine.Random.Range(0, TeleportPoints.Count);
+            Vector3 vector = new Vector3(TeleportPoints[a].position.x, TeleportPoints[a].position.y, -1) ;
+            transform.position = vector;
+            
+        }
 
     }
 
@@ -76,6 +87,11 @@ public class Bird : MonoBehaviour
 
     private void Update()
     {
+
+        delayCount += Time.deltaTime;
+        if (delayCount >= 1) { delay = true; }
+
+
         if (Input.GetKeyDown(KeyCode.W)) OnWPressed();
         if (Input.GetKey(KeyCode.S)) OnSPressed();
         
@@ -100,11 +116,15 @@ public class Bird : MonoBehaviour
 
     private void OnWPressed()
     {
-        VerticalMove += 0.2f;
-        VerticalMove = Mathf.Clamp(VerticalMove, 0, 2 + 0.1f * CountOfBugs);
-        RotationSlow = VerticalMove * 0.1f;
-        RotationSlow = Mathf.Clamp(RotationSlow, 0, 0.9f * RotationSpeed);
-        animator.SetBool("isFly", true);
+        if (delay)
+        {
+            VerticalMove += 0.2f + 0.1f*VerticalMove;
+            VerticalMove = Mathf.Clamp(VerticalMove, 0, 2 + 0.1f * CountOfBugs);
+            RotationSlow = VerticalMove * 0.1f;
+            RotationSlow = Mathf.Clamp(RotationSlow, 0, 0.9f * RotationSpeed);
+            Delay();
+            animator.SetBool("isFly", true);
+        }
     }
     private void OnSPressed()
     {
@@ -113,5 +133,11 @@ public class Bird : MonoBehaviour
         RotationSlow = VerticalMove * 0.1f;
         RotationSlow = Mathf.Clamp(RotationSlow, 0, 0.9f * RotationSpeed);
         animator.SetBool("isFly", false);
+    }
+    private void Delay()
+    {
+        delay = false;
+        delayCount = 0;
+       
     }
 }
