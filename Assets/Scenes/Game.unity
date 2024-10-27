@@ -764,11 +764,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b874711d6d036e04ebb1cf17f69722aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &1409988720 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 837519944355583693, guid: df2873714635244419efdbe00d902d30, type: 3}
-  m_PrefabInstance: {fileID: 5977744122942522307}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1430603084
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1907,7 +1902,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 837519944355583693, guid: df2873714635244419efdbe00d902d30, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1843348024391618216, guid: df2873714635244419efdbe00d902d30, type: 3}
       propertyPath: m_Pivot.x
@@ -2066,7 +2061,8 @@ PrefabInstance:
       value: HUD
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 837519944355583693, guid: df2873714635244419efdbe00d902d30, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 8487301623497773170, guid: df2873714635244419efdbe00d902d30, type: 3}
@@ -2096,7 +2092,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f0013c8050542f4786fcaf0e9e4bc16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interfacePanel: {fileID: 1409988720}
+  ReturnButton: {fileID: 0}
+  StartButton: {fileID: 0}
+  ExitButton: {fileID: 0}
 --- !u!114 &6721264782489190987 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5271400748165656606, guid: 20f3f23daedf45e448072649e9a24b1d, type: 3}

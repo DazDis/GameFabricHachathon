@@ -6,6 +6,8 @@ public class HUD : MonoBehaviour
 {
     [SerializeField] public Slider HealthSlider;
     [SerializeField] private TMP_Text _bugCount;
+    public GameObject interfacePanel;
+
     //private int _countOfBugs = 0;
     private int _countOfHealth;
 
@@ -23,5 +25,11 @@ public class HUD : MonoBehaviour
     private void Update()
     {
         HealthSlider.value -= Time.deltaTime;
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            // Инвертируем видимость интерфейса
+            interfacePanel.SetActive(!interfacePanel.activeSelf);
+            Time.timeScale = 0;
+        }
     }
 }
