@@ -36,6 +36,8 @@ public class Bird : MonoBehaviour
     public List<Sprite> BugSprites;
     public List<Transform> TeleportPoints;
 
+    public Animator animator;
+
     public UnityEvent GetBug;
     public UnityEvent NeedBug;
     private void OnEnable()
@@ -129,6 +131,7 @@ public class Bird : MonoBehaviour
         VerticalMove = Mathf.Clamp(VerticalMove, 0, 2 + 0.1f * CountOfBugs);
         RotationSlow = VerticalMove * 0.1f;
         RotationSlow = Mathf.Clamp(RotationSlow, 0, 0.9f * RotationSpeed);
+        animator.SetBool("isFly", false);
     }
     private void Delay()
     {
