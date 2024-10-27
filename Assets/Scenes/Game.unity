@@ -2014,7 +2014,7 @@ PrefabInstance:
     - target: {fileID: 4626114957369987752, guid: df2873714635244419efdbe00d902d30, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 42f6178d1fc6fbc468e35feb2b4b84d1, type: 3}
+      objectReference: {fileID: 21300000, guid: 01403db57a8349642b9b36acbff23320, type: 3}
     - target: {fileID: 4626114957369987752, guid: df2873714635244419efdbe00d902d30, type: 3}
       propertyPath: m_Color.b
       value: 1
@@ -2046,7 +2046,7 @@ PrefabInstance:
     - target: {fileID: 6198656782384510025, guid: df2873714635244419efdbe00d902d30, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 9174978e160eed84598fb9019169dcff, type: 3}
+      objectReference: {fileID: 21300000, guid: 750c868786616cf40a90358f4a49657e, type: 3}
     - target: {fileID: 6198656782384510025, guid: df2873714635244419efdbe00d902d30, type: 3}
       propertyPath: m_Color.b
       value: 1
@@ -2231,7 +2231,7 @@ Camera:
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
-  orthographic: 0
+  orthographic: 1
   orthographic size: 5
   m_Depth: -1
   m_CullingMask:
