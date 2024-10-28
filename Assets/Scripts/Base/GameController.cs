@@ -34,7 +34,7 @@ public class GameController : MonoBehaviour
     private void Update()
     {
         transform.position = Vector3.Lerp(transform.position, _bird.transform.position + offset, Time.deltaTime * 5f);
-        if (_hud.HealthSlider.value <= 0) { EndOfGame(); }
+        if (_hud.HealthSlider.value <= 0 & !_hud._deadWindow.gameObject.activeSelf) { EndOfGame(); }
 
     }
 
@@ -87,7 +87,6 @@ public class GameController : MonoBehaviour
 
     private void EndOfGame()
     {
-        Debug.Log("222");
         _hud._deadWindow.gameObject.SetActive(true);
         Time.timeScale = 0;
     }
